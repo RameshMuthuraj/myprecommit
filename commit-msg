@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Get the commit message
+commit_msg=$(cat $1)
+
+# Check if the commit message contains a JIRA ID
+if [[ ! $commit_msg =~ [A-Z]+-[0-9]+ ]]; then
+  echo "Error: Commit message must contain a valid JIRA ID (e.g. ABC-123)." >&2
+  exit 1
+fi
+
+# If the commit message contains a valid JIRA ID, allow the commit
+exit 0
